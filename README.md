@@ -1,8 +1,14 @@
 # Elaixir
 
-**Contiene piu package**
+**Contiene più package** Non appena lo sviluppo si stabilizza verrà suddiviso
 
 ### Alfa Status
+
+### Coordinate
+
+### Reticoli - IGM 50.000 - IGM 25.000 - CTR 10.000 Zona Sardegna
+
+### EPSG - codici Italiani
 
 ## Installation
 
