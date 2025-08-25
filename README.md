@@ -11,13 +11,20 @@
 ## EPSG - codici Italiani
   <https://epsg.io/6707>
 
-# IGM - Siti Utili © 2015 Istituto Geografico Militare
-I siti qui indicati sono gestiti esclusivamente dall'istituto geografico militare.
+# IGM 
+## Avvertenza
+
+Questo repository **non ha alcuna relazione ufficiale con l’Istituto Geografico Militare (IGM)**.  
+I collegamenti presenti rimandano a pagine del sito dell’IGM esclusivamente come riferimento informativo.  
+
+Tutti i diritti sui contenuti linkati appartengono a **IGM – Istituto Geografico Militare**,  
+ente cartografico di Stato che dal 1861 garantisce **qualità, autorevolezza e ufficialità**  
+nella produzione e gestione della cartografia nazionale.
 
 
-Sono riportati qui esclusivamente come collegamento e non hanno alcuna relazione con questo
-repository.
-<https://www.igmi.org/vol/index_coord.php>
+👉 [Sito ufficiale IGM](https://www.igmi.org/)
+Consiglio lettura di "Corretto utilizzo dei Sistemi Geodetici di Riferimento all'interno dei software GIS" nella pagina web sottostante.
+👉 [Conversione singolo punto](https://www.igmi.org/vol/index_coord.php)
 
 
 ## Installation
