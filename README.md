@@ -23,9 +23,8 @@ nella produzione e gestione della cartografia nazionale.
 
 
 👉 [Sito ufficiale IGM](https://www.igmi.org/)
-Consiglio lettura di "Corretto utilizzo dei Sistemi Geodetici di Riferimento all'interno dei software GIS" nella pagina web sottostante.
-👉 [Conversione singolo punto](https://www.igmi.org/vol/index_coord.php)
 
+👉 [Conversione singolo punto](https://www.igmi.org/vol/index_coord.php) Leggere anche: "Corretto utilizzo dei Sistemi Geodetici di Riferimento all'interno dei software GIS"
 
 ## Installation
 
