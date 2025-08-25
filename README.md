@@ -11,6 +11,15 @@
 ## EPSG - codici Italiani
   <https://epsg.io/6707>
 
+# IGM - Siti Utili © 2015 Istituto Geografico Militare
+I siti qui indicati sono gestiti esclusivamente dall'istituto geografico militare.
+
+
+Sono riportati qui esclusivamente come collegamento e non hanno alcuna relazione con questo
+repository.
+<https://www.igmi.org/vol/index_coord.php>
+
+
 ## Installation
 
 Puoi aggiungere `elaixir`
