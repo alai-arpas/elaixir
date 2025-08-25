@@ -1,18 +1,20 @@
 # Elaixir
 
-**My help functions**
+**Contiene piu package**
+
+### Alfa Status
 
 ## Installation
 
-The package can be installed by adding `elaixir`
-to your list of dependencies in `mix.exs`:
+Puoi aggiungere `elaixir`
+alla lista delle dipendenze `mix.exs`:
 
 ```elixir
 def deps do
   [
-    {:elaixir, "~> 0.1.0"}
+    {:elaixir, "~> 0.1.3"}
   ]
 end
 ```
 
-Documentation can be found at <https://hexdocs.pm/elaixir>.
+Documentazione <https://hexdocs.pm/elaixir>.
