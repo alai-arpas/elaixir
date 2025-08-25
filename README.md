@@ -8,7 +8,8 @@
 
 ### Reticoli - IGM 50.000 - IGM 25.000 - CTR 10.000 Zona Sardegna
 
-### EPSG - codici Italiani
+## EPSG - codici Italiani
+  <https://epsg.io/6707>
 
 ## Installation
 
