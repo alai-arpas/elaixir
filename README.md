@@ -22,7 +22,7 @@ Tutti i diritti sui contenuti linkati appartengono a **IGM – Istituto Geografi
 
 👉 [Conversione file](https://igmi.org/vol/index_file.php)
 
-👉 [Conversione singolo punto](https://www.igmi.org/vol/index_coord.php) Leggere anche: "Corretto utilizzo dei Sistemi Geodetici di Riferimento nei software GIS"
+👉 [Conversione singolo punto](https://www.igmi.org/vol/index_coord.php) Leggi: "Corretto utilizzo Sistemi Geodetici di Riferimento nei software GIS"
 
 ## Installation
 
