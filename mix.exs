@@ -1,7 +1,7 @@
 defmodule Elaixir.MixProject do
   use Mix.Project
 
-  @version "0.1.3"
+  @version "0.1.4"
 
   def project do
     [
@@ -43,7 +43,7 @@ defmodule Elaixir.MixProject do
 
   defp aliases do
     [
-      wv: ["arpos -awv"]
+      wv: ["Elaixir -awv"]
     ]
   end
 end
