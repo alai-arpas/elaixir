@@ -38,10 +38,56 @@ defmodule Elaixir.Coordinate.GradiSessagesimali do
   end
 
   @doc """
+  Restituisce la rappresentazione testuale della coordinata
+  in formato `G° M' S"`.
+  """
+  @spec to_name(t()) :: String.t()
+  def to_name(%__MODULE__{gradi: g, minuti: m, secondi: s}) do
+    "#{g}_#{m}_#{s}"
+  end
+
+  @doc """
   Restituisce la coordinata come tupla `{gradi, minuti, secondi}`.
   """
   @spec to_tuple(t()) :: {integer(), integer(), integer()}
   def to_tuple(%__MODULE__{gradi: g, minuti: m, secondi: s}) do
     {g, m, s}
+  end
+
+  @doc """
+  Somma due coordinate `GradiSessagesimali`.
+  """
+  @spec somma(t(), t()) :: t()
+  def somma(%__MODULE__{gradi: g1, minuti: m1, secondi: s1}, %__MODULE__{
+        gradi: g2,
+        minuti: m2,
+        secondi: s2
+      }) do
+    tot_secondi = s1 + s2
+    riporto_minuti = div(tot_secondi, 60)
+    secondi = rem(tot_secondi, 60)
+
+    tot_minuti = m1 + m2 + riporto_minuti
+    riporto_gradi = div(tot_minuti, 60)
+    minuti = rem(tot_minuti, 60)
+
+    gradi = g1 + g2 + riporto_gradi
+
+    %__MODULE__{gradi: gradi, minuti: minuti, secondi: secondi}
+  end
+
+  @doc """
+  Moltiplica una coordinata `GradiSessagesimali` per un intero.
+  """
+  @spec moltiplica(t(), integer()) :: t()
+  def moltiplica(%__MODULE__{gradi: g, minuti: m, secondi: s}, n) when is_integer(n) and n >= 0 do
+    tot_secondi = (g * 3600 + m * 60 + s) * n
+
+    gradi = div(tot_secondi, 3600)
+    rest = rem(tot_secondi, 3600)
+    minuti = div(rest, 60)
+    secondi = rem(rest, 60)
+
+    %__MODULE__{gradi: gradi, minuti: minuti, secondi: secondi}
   end
 end
