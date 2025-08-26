@@ -1,5 +1,6 @@
 defmodule Elaixir.Reticoli.QuadroIgm50Sardegna do
   alias Elaixir.Coordinate.GradiSessagesimali
+  alias Elaixir.Reicoli.Incrementi
 
   @tabella [
     ["M-408", "M-409", "M-410", "411", "412", "M-413"],
@@ -69,8 +70,8 @@ defmodule Elaixir.Reticoli.QuadroIgm50Sardegna do
   end
 
   def get_igm do
-    lon_x_decimale = to_decimale(@lon_x_gg_mm_ss)
-    lat_y_decimale = to_decimale(@lat_y_gg_mm_ss)
+    # lon_x_decimale = to_decimale(@lon_x_gg_mm_ss)
+    # lat_y_decimale = to_decimale(@lat_y_gg_mm_ss)
 
     quadro_top_left()
     |> Enum.with_index()
@@ -78,8 +79,49 @@ defmodule Elaixir.Reticoli.QuadroIgm50Sardegna do
       riga
       |> Enum.with_index()
       |> Enum.map(fn {valore, i_col} ->
-        {valore, {i_riga, i_col}, {lon_x_decimale, lat_y_decimale}}
+        {valore, {i_riga, i_col}}
       end)
     end)
+  end
+
+  def get_igm_left_bottom do
+    quadro_top_left()
+    |> Enum.with_index()
+    |> Enum.map(fn {riga, i_riga} ->
+      riga
+      |> Enum.with_index()
+      |> Enum.map(fn {valore, i_col} ->
+        {valore, {i_riga, i_col}, get_new_base({i_riga, i_col})}
+      end)
+    end)
+  end
+
+  def get_new_base({i_riga_Y, i_col_X}) do
+    # Quando {i_riga, i_col} = {0,0} non viene incrementato nulla
+    # siamo nello spigolo bottom_left
+
+    x_inc_50 = Incrementi.get_x(50)
+    y_inc_50 = Incrementi.get_y(50)
+
+    incremento_x_totale = GradiSessagesimali.moltiplica(x_inc_50, i_col_X)
+    incremento_y_totale = GradiSessagesimali.moltiplica(y_inc_50, i_riga_Y)
+
+    new_lon_x = GradiSessagesimali.somma(@lon_x_gg_mm_ss, incremento_x_totale)
+    new_lat_y = GradiSessagesimali.somma(@lat_y_gg_mm_ss, incremento_y_totale)
+
+    {new_lon_x, new_lat_y}
+  end
+
+  def get_igm_validi do
+    get_igm_left_bottom()
+    |> List.flatten()
+    |> Enum.filter(fn {igm, _riga_colonna, _coord} -> not String.starts_with?(igm, "M") end)
+    |> Enum.map(fn {igm, _riga_colonna, {x, y}} -> {igm, x, y} end)
+  end
+
+  def elabora_dammi_10_punti({igm, x, y}) do
+    x_inc_10 = Incrementi.get_x(10)
+    y_inc_10 = Incrementi.get_y(10)
+    {igm, x, y, x_inc_10, y_inc_10}
   end
 end
