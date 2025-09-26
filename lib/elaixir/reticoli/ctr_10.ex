@@ -47,4 +47,6 @@ defmodule Elaixir.Reticoli.Ctr10 do
   def genera_nomi(igm) do
     igm
   end
+
+  {:x, :y}
 end
