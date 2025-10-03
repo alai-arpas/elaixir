@@ -32,7 +32,7 @@ alla lista delle dipendenze `mix.exs`:
 ```elixir
 def deps do
   [
-    {:elaixir, "~> 0.1.6"}
+    {:elaixir, "~> 0.1.7"}
   ]
 end
 ```
