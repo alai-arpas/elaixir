@@ -1,4 +1,9 @@
 defmodule CargCad.Vestizione do
+  @moduledoc """
+  Struttura file letta dalla macro in vba per la
+  generazione delle vestizioni nel progetto carg
+  """
+
   defstruct descrizione: "",
             iniziale: "",
             numero_layer: "",
