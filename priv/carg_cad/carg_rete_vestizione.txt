@@ -1,0 +1,611 @@
+/N:Descrizione
+/numero layer input(array 0 = 1 elemento)
+/LayerInput 0
+/LayerInput 1
+/LayerInput N
+/numero blocchi
+/Blocco 0
+/Blocco 1
+/Blocco n
+/Layer OUtput
+/Intervalli campitura
+/Disegna linea (SI-NO) Usare SI solo se la linea CONTINUA
+/************************
+N:Faglia Transtensiva SINISTRA Certa
+FrSC
+1
+FrSC-AnT
+FrSC-nnT
+0
+V_FAGDIRETTA
+VFrSC-nVn
+L:-3.5,B:1.75:V_FAGDIRETTA
+SI
+/************************
+N:Faglie Transtensiva SINISTRA presunta
+FrSP
+3
+FrSP-Ant
+FrSP-nnt
+FrSS-nnt
+FrSS-Ant
+0
+V_FAGDIRETTA
+VFrSP-nVn
+L:-0.5,L:3.0,B:1.5:V_FAGDIRETTA
+NO
+/************************
+N:Faglia Transtensiva DESTRA Certa
+FrDC
+1
+FrDC-AnT
+FrDC-nnT
+0
+V_FAGDIRETTA
+VFrDC-nVn
+L:-3.5,B:1.75:V_FAGDIRETTA
+SI
+/************************
+N:Faglie Transtensiva DESTRA presunta
+FrDP
+3
+FrDP-Ant
+FrDP-nnt
+FrDS-nnt
+FrDS-Ant
+0
+V_FAGDIRETTA
+VFrDP-nVn
+L:-0.5,L:3.0,B:1.5:V_FAGDIRETTA
+NO
+/************************
+N:Strato 27 Tipo 4000 Traccia di linea Sismica
+Strato27_4000
+0
+St027L_4000-NNNI_TracciaSismica
+0
+Vs27_4000Blk
+St027L_4000-NVNO_BLUE2_0.25
+L:2.0,L:-1.0,L:2.0,L:-3.2,B:1.6:Vs27_4000Blk
+NO
+/************************
+N:Strato 27 Tipo 5000 Traccia di linea acustica
+Strato27_5000
+0
+St027L_5000-NNNI_TracciaAcustica
+0
+Vs27_5000Blk
+St027L_5000-NVNO_BLUE2_0.40
+L:1.5,L:-2.6,B:1.3:Vs27_5000Blk
+NO
+/************************
+N:INCONFORME Certa completa
+Strato18_1100mezzeriaCompleta
+0
+LinC-AVn
+0
+Vs18_1600BlkMC0.2
+St018L_1600-NVNO_MC_ReflexBLUE_0.10_L+1.50L-0.50
+L:-0.5,B:0.25:Vs18_1600BlkMC0.2
+NO
+/************************
+N:INCONFORME presunta compelta
+Strato18_1600mezzeriaCompleta
+1
+LinP-AVn
+St018L_1600-ANNI_ContattoInconforme
+0
+Vs18_1600BlkMC0.2
+St018L_1600-NVNO_MC_ReflexBLUE_0.10_L+1.50L-0.50
+L:-0.5,B:0.25:Vs18_1600BlkMC0.2
+NO
+/************************
+N:Faglia Certa
+FagC
+1
+FagC-Ant
+FagC-nnt
+0
+V_FAGLIA
+VFagC-nVn
+L:1000000
+NO
+/************************
+N:Faglia presunta
+FagP
+3
+FagP-Ant
+FagP-nnt
+FagS-Ant
+FagS-nnt
+0
+V_FAGLIA
+VFagP-nVn
+L:1000000
+NO
+/************************
+N:Faglia Diretta Certa
+FaDC
+1
+FaDC-Ant
+FaDC-nnt
+0
+V_FAGDIRETTA
+VFaDC-nVn
+L:-3.5,B:1.75:V_FAGDIRETTA
+SI
+/************************
+N:Faglie Diretta presunta
+FaDP
+3
+FaDP-Ant
+FaDP-nnt
+FaDS-nnt
+FaDS-Ant
+0
+V_FAGDIRETTA
+VFaDP-nVn
+L:-0.5,L:3.0,B:1.5:V_FAGDIRETTA
+NO
+/************************
+N:Faglia INVERSA Certa
+FaIC
+1
+FaIC-Ant
+FaIC-nnt
+0
+V_FAGINVERSA
+VFaIC-nVn
+L:-3.5,B:1.75:V_FAGINVERSA
+SI
+/************************
+N:Faglie INVERSA presunta
+FaIP
+2
+FaIP-Ant
+FaIP-nnt
+FaIS-nnt
+0
+V_FAGINVERSA
+VFaIP-nVn
+L:-0.5,L:3.0,B:1.5:V_FAGINVERSA
+NO
+/************************
+N:Faglia Trascorrente DESTRA Certa
+FtDC
+1
+FtDC-Ant
+FtDC-nnt
+0
+PO_ORA_BLU
+VFtDC-nVn
+L:1000000
+NO
+/************************
+N:Faglia Trascorrente DESTRA Presunta
+FtDP
+3
+FtDP-Ant
+FtDP-nnt
+FtDS-nnt
+FtDS-Ant
+0
+PO_ORA_BLU
+VFtDP-nVn
+L:1000000
+NO
+/************************
+N:Faglia Trascorrente SINISTRA Certa
+FtSC
+1
+FtSC-Ant
+FtSC-nnt
+0
+PO_ANTI_BLU
+VFtSC-nVn
+L:1000000
+NO
+/************************
+N:Faglia Trascorrente SINISTRA Presunta
+FtSP
+3
+FtSP-Ant
+FtSP-nnt
+FtSS-nnt
+FtSS-Ant
+0
+PO_ANTI_BLU
+VFtSP-nVn
+L:1000000
+NO
+/************************
+N:Sovrascorrimento certo
+SovC
+1
+SovC-Ant
+SovC-nnt
+0
+V_SOVRA
+VSovC-nVn
+L:-3.5,B:1.75:V_SOVRA
+SI
+/************************
+N:Sovrascorrimento presunto
+SovP
+2
+SovP-Ant
+SovP-nnt
+SovS-nnt
+0
+V_SOVRA
+VSovP-nVn
+L:-0.5,L:3.0,B:1.5:V_SOVRA
+NO
+/************************
+N:Sovrascorrimento MINORE certo
+SvMC
+1
+SvMC-Ant
+SvMC-nnt
+0
+V_SvM
+VSvMC-nVn
+L:-4.0,B:2.0:V_SvM
+SI
+/************************Vecchio L:-3.5,B:1.75:V_SvM
+N:Sovrascorrimento MINORE presunto
+SvMP
+2
+SvMP-Ant
+SvMP-nnt
+SvMS-nnt
+0
+V_SvM
+VSvMP-nVn
+L:-0.5,L:3.0,B:1.5:V_SvM
+NO
+/************************
+N:AntiCLINALE
+ACLN
+4
+ACLN0-nnt
+ACLN1-nnt
+ACLN2-nnt
+ACLN3-nnt
+ACLN4-nnt
+0
+V_ROMBOPIENO
+VACLN-nVn
+L:4,B:2:V_ROMBOPIENO,L:-0.5,L:0.25,L:-0.5
+NO
+/************************
+N:SinCLINALE
+SCLN
+4
+SCLN0-nnt
+SCLN1-nnt
+SCLN2-nnt
+SCLN3-nnt
+SCLN4-nnt
+0
+V_ROMBOPIENO_INVERSO
+VSCLN-nVn
+L:4,B:2:V_ROMBOPIENO_INVERSO,L:-0.5,L:0.25,L:-0.5
+NO
+/************************
+N:AntiFORME
+AFRM
+4
+AFRM0-nnt
+AFRM1-nnt
+AFRM2-nnt
+AFRM3-nnt
+AFRM4-nnt
+0
+V_ROMBOVUOTO
+VAFRM-nVn
+L:4,B:2:V_ROMBOVUOTO,L:-0.5,L:0.25,L:-0.5
+NO
+/************************
+N:SinFORME
+SFRM
+4
+SFRM0-nnt
+SFRM1-nnt
+SFRM2-nnt
+SFRM3-nnt
+SFRM4-nnt
+0
+V_ROMBOPIENO_INVERSO
+VSFRM-nVn
+L:4,B:2:V_ROMBOVUOTO_INVERSO,L:-0.5,L:0.25,L:-0.5
+NO
+/************************
+N:Orlo di terrazzo 
+ORLO
+1
+ORLO-Ann
+ORLO-nnn
+0
+V_ORLOTERRAZZO
+VORLO-nVn
+L:-0.875,B:0.4375:V_ORLOTERRAZZO
+NO
+/************************
+N:Limite + Orlo di frana (CAPOTERRA E PULA L:-1.75,B:0.875:V_ORLOFRANA)
+LFRC
+3
+St012L_1030_C-ANNI_OrloScarpataDiFrana
+St012L_1030_C-NNNI_OrloScarpataDiFrana
+LFRC-Ann
+LFRC-nnn
+0
+Vs12_1030Blk
+St012L_1030-NVNO_0.30WarmRED
+L:-1.0,B:0.5:Vs12_1030Blk
+SI
+/************************
+N:STRATO 12 Orlo Scarpata Collasso Vulcanico
+Strato12_5023
+0
+ST012L_5023_C-NNNI_OrloScarpataCollassoVulcanico
+0
+Vs12_5023Blk
+ST012L_5023-NVNO_0.20Pantone470
+L:-2.20,B:1.10:Vs12_5023Blk
+SI
+/************************
+N:Livello Guida
+LivG
+0
+LivG-nnn
+0
+V_LIVELLOGUIDA
+VLivG-nVn
+L:-1.0,B:0.5:V_LIVELLOGUIDA
+NO
+/************************
+N:Strato 12 Trincea di deformazione gravitativa di versante 1040 _0.20WarmRED
+Strato12_1040
+1
+St012L_1040-ANNI
+St012L_1040-NNNI
+0
+Vs12_1040Blk
+St012L_1040-NVNO_0.20WarmRED
+L:-1.70,B:0.85:Vs12_1040Blk
+SI
+/************************
+N:Strato 12 Traccia di Superficie di distacco gravitativo 1070
+Strato12_1070
+0
+St012L_1070-NNNI_TraSupDistaccoGravitativo_topo11
+0
+Vs12_1070Blk
+St012L_1070-NVNO_0.20WarmRED
+L:3.70,L:-2.20,B:1.10:Vs12_1070Blk
+NO
+/************************
+N:Strato 12 Gradino scivolamento 1080
+Strato12_1080
+0
+St012L_1080-NNNI_GradinoScivolamento_topo11
+0
+Vs12L_1080Blk
+St012L_1080-NVNO_0.20WarmRED
+L:-2.15,B:1.075:Vs12_1080Blk
+SI
+/************************
+N:xxxxxxxxxxxxxxxxxxxxxxStrato 12 - 5010 Orlo di cratere
+Strato12_5010
+0
+St012L_5010-NNNI_OrloDiCratere
+0
+vs12_5010Blk
+St012L_5010-NNNO_0.30BROWN
+L:-3.0,B:1.5:vs12_5010Blk
+SI
+/************************
+N:Strato 12 - 5020 Orlo morfologico di caldera
+Strato12_5020
+0
+St012L_5020-NNNI_OrloMorfologicoDiCaldera
+0
+vs12_5020Blk
+St012L_5020-NNNO_0.30BROWN
+L:-3.0,B:1.5:vs12_5020Blk
+SI
+/************************
+N:Strato 12 - 6010 Evidenza morfologica di antica linea di costa
+Strato12_6010
+0
+St012L_6010-NNNI_AnticaLineaDiCosta
+0
+Vs12_6010Blk
+St012L_6010-NVNO_BLUE2
+L:-1.0,B:0.5:Vs12_6010Blk
+NO
+/************************
+N:Strato 12 Orlo di scarpata Antropico 8011
+Strato12_8011
+0
+St012L_8011-NNNI_OrloScarpataAntropico
+0
+Vs12_8011Blk
+St012L_8011-NVNO_0.30CoolGRAY10
+L:-2.1,B:1.05:Vs12_8011Blk
+SI
+/************************
+N:Strato 12 Orlo di falesia 9014 (OROSEI)
+Strato12_9014
+0
+St012L_9014-ANNI_OrloDiFalesia
+0
+Vs12_9014Blk
+St012L_9014-NVNO_0.30BLUE2
+L:-2.1,B:1.05:Vs12_9014Blk
+SI
+/************************
+N:Strato 12 - 9011 Asse Canyon sottomario
+Strato12_9011
+0
+St012L_9011-NNNI_AsseCanyonSottomarino
+0
+Vs12_9011Blk
+St012L_9011-NVNO
+L:-14.25,B:7.125:Vs12_9011Blk
+NO
+/************************
+N:Strato 12 - 9013 Bordo di paleoalveo sepolto
+Strato12_9013
+0
+St012L_9013-NNNI_BordoPaleoAlveo
+0
+V_IL_BLOCCO_NON_SERVE
+St012L_9013-NVNO_0.20BLUE2_L+3.70L-0.50
+L:1000000000
+NO
+/************************
+N:Strato 12 - 9018 Gully
+Strato12_9018
+0
+St012L_9018-NNNI_Gully
+0
+Vs12_9018Blk
+St012L_9018-NVNO_0.30BLUE2
+L:-8.3,B:4.15:Vs12_9018Blk
+SI
+/************************
+N:Strato 12 - 9020 Barra Sommersa
+Strato12_9020
+0
+St012L_9020-NNNI_BarraSommersa
+0
+Vs12_9020Blk
+St012L_9020-NVNO_0.20BLUE2
+L:1.6,L:-1.2,B:0.6:Vs12_9020Blk,L:1.6
+NO
+/************************
+N:Strato 12 - 9030 Orlo di terrazzo marino
+Strato12_9030
+0
+St012L_9030-NNNI_OrloTMarino
+0
+Vs12_9030Blk
+St012L_9030-NVNO_0.30BLUE2
+L:-1.0,B:0.5:Vs12_9030Blk
+SI
+/************************
+N:Strato 11 Areale Orlo di depressione 9040 (OROSEI)
+Strato11_9040
+0
+St011A_9040_1-ANNI_OrloDiDepressione
+0
+Vs11_9040Blk
+St011A_9040-NVNO_0.20BLUE2
+L:-1.2,B:0.6:Vs11_9040Blk
+SI
+/************************
+N:Strato 12 - 9111 Ciglio PIATTAFORMA
+Strato12_9110
+0
+St012L_9110-ANNI_CiglioPiattaforma
+0
+vs12_9110Blk
+St012L_9110-NVNO_0.40BLUE2
+L:-6.0,B:3.0:vs12_9110Blk
+SI
+/*********************************************************************************************************************************
+N:Strato 12 - 9111 Ciglio piattaforma in ARRETRAMENTO
+Strato12_9111
+0
+St012L_9111-ANNI_CiglioInArretramento
+1
+vs12_9111aBlk
+vs12_9111bBlk
+St012L_9111-NVNO_0.40BLUE2
+L:-5.1,B:2.55:vs12_9111aBlk
+SI
+/************************
+N:Strato 12 - 9112 Ciglio piattaforma in PROGRADAZIONE
+Strato12_9112
+0
+St012L_9112-ANNI_CiglioInProgradazione
+1
+vs12_9112aBlk
+vs12_9112bBlk
+St012L_9112-NVNO_0.40BLUE2
+L:-5.1,B:2.55:vs12_9112aBlk
+SI
+/************************
+N:Strato 12 - 9121 Testata di Canyon in ARRETRAMENTO
+Strato12_9121
+0
+St012L_9121-NNNI_TestataCanyonArretramento
+1
+vs12_9121aBlk
+vs12_9121bBlk
+St012L_9121-NVNO_0.40BLUE2
+L:-5.4,B:2.70:vs12_9121aBlk
+SI
+/************************
+N:Strato 12 - 9122 Orlo Canyon Sottomarino
+Strato12_9122
+0
+St012L_9122-NNNI_OrloCanyonSottomarino
+1
+vs12_9122aBlk
+vs12_9122bBlk
+St012L_9122-NVNO_0.40BLUE2
+L:-6.6,B:3.3:vs12_9122aBlk
+SI
+/************************
+N:Strato 12 - 9141 Ciglio di terrazzo deposizionale sommerso
+Strato12_9141
+0
+St012L_9141-ANNI_CigloTerDeposizionale
+0
+vs12_9141Blk
+St012L_9141-NVNO_0.15BLUE2
+L:-6.0,B:3.0:vs12_9141Blk
+SI
+/************************
+N:Strato 12 - 9130 Rottura di pendio
+Strato12_9130
+0
+St012L_9130-ANNI_RotturaDiPendio
+0
+vs12_9130Blk
+St012L_9130-NVNO_0.30BLUE2
+L:-7.5,B:3.75:vs12_9130Blk
+SI
+/************************
+N:Strato 11 - 7001 Limite morfologico di colata Lavica PRESUNTO
+Strato11_7001_presunto
+0
+St011L_7001-NNI_LimiteMorfologicoColataLavica_presunto
+0
+Vs11_7002Blk
+St011L_7001-NVNO_0.15mc64
+L:-1.0,L:4.0,B:2.0:Vs11_7001Blk
+NO
+/************************
+N:Strato 11 - 7001 Limite morfologico di colata Lavica CERTO
+Strato11_7001
+0
+St011L_7001-NNI_LimiteMorfologicoColataLavica
+0
+Vs11_7002Blk
+St011L_7001-NVNO_0.15mc64
+L:-4.0,B:2.0:Vs11_7001Blk
+SI
+/************************
+N:Strato 11 - 7002 Gradino di Collasso Vulcanico gravitativo
+Strato11_7002
+0
+St011L_7002-NNI_GradinoCollassoVulcanicoGravitativo
+0
+Vs11_7002Blk
+St011L_7002-NVNO_0.15mc64
+L:-3.0,B:1.5:Vs11_7002Blk
+SI
