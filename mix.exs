@@ -32,7 +32,7 @@ defmodule Elaixir.MixProject do
   defp deps do
     [
       {:ex_doc, ">= 0.0.0", only: :dev, runtime: false},
-      {:ecto_sqlite3, "~> 0.17"}
+      {:ecto_sqlite3, "~> 0.22"}
     ]
   end
 
