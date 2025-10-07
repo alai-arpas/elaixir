@@ -9,7 +9,8 @@ defmodule Elaixir.Application do
   def start(_type, arg) do
     children = [
       # Starts a worker by calling: Elaixir.Worker.start_link(arg)
-      {Elaixir.Worker, arg}
+      {Elaixir.Worker, arg},
+      Elaixir.Repo
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html

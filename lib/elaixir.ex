@@ -17,6 +17,5 @@ defmodule Elaixir do
   end
 
   def directory_dati() do
-    :code.priv_dir(:elaixir)
   end
 end
