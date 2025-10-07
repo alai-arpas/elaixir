@@ -15,4 +15,8 @@ defmodule Elaixir do
   def author do
     "Andrea Lai"
   end
+
+  def directory_dati() do
+    :code.priv_dir(:elaixir)
+  end
 end
