@@ -16,4 +16,4 @@ c = GS.make(%{gradi: 0, minuti: 5, secondi: 0})
 
 alias CargCad.Vestizione
 
-alias Elaxir.Repo
+alias Elaixir.Repo
