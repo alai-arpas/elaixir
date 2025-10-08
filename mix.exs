@@ -1,13 +1,13 @@
 defmodule Elaixir.MixProject do
   use Mix.Project
 
-  @version "0.1.11"
+  @version "0.1.12"
 
   def project do
     [
       app: :elaixir,
       version: @version,
-      elixir: "~> 1.15",
+      elixir: "~> 1.18",
       description: description(),
       package: package(),
       start_permanent: Mix.env() == :prod,
@@ -32,7 +32,10 @@ defmodule Elaixir.MixProject do
   defp deps do
     [
       {:ex_doc, ">= 0.0.0", only: :dev, runtime: false},
-      {:ecto_sqlite3, "~> 0.22"}
+      {:ecto, "~> 3.13.3"},
+      {:ecto_sql, "~> 3.13.2"},
+      {:ecto_sqlite3, "0.22.0"},
+      {:exqlite, "0.33.1"}
     ]
   end
 
