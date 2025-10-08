@@ -4,5 +4,4 @@ import Config
 config :elaixir,
   ecto_repos: [Elaixir.Repo]
 
-config :elaixir, Elaixir.Repo,
-  database: "elaixir.db"
+config :elaixir, Elaixir.Repo, database: "./priv/my_sqlite.db"
