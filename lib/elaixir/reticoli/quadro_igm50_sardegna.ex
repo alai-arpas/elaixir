@@ -117,6 +117,7 @@ defmodule Elaixir.Reticoli.QuadroIgm50Sardegna do
     |> List.flatten()
     |> Enum.filter(fn {igm, _riga_colonna, _coord} -> not String.starts_with?(igm, "M") end)
     |> Enum.map(fn {igm, _riga_colonna, {x, y}} -> {igm, x, y} end)
+    |> Enum.reduce(%{}, fn {igm, x, y}, acc -> Map.put(acc, igm, %{lb_x: x, lb_y: y}) end)
   end
 
   def elabora_dammi_10_punti({igm, x, y}) do

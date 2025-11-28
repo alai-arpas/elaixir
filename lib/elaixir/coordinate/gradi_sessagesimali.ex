@@ -29,6 +29,26 @@ defmodule Elaixir.Coordinate.GradiSessagesimali do
   end
 
   @doc """
+  Crea una nuova struct `GradiSessagesimali` a partire da una stringa
+  "gradi:minuti:secondi"
+  """
+  @spec make_from_string(String.t(), String.t()) :: t()
+  def make_from_string(stringa, separatore \\ ":") do
+    case String.split(stringa, separatore) do
+      [g, m, s] ->
+        %__MODULE__{
+          gradi: String.to_integer(g),
+          minuti: String.to_integer(m),
+          secondi: String.to_integer(s)
+        }
+
+      _ ->
+        raise ArgumentError,
+          message: "Formato non valido: usa \"gradi#{separatore}minuti#{separatore}secondi\""
+    end
+  end
+
+  @doc """
   Restituisce la rappresentazione testuale della coordinata
   in formato `G° M' S"`.
   """

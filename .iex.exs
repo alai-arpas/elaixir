@@ -17,3 +17,7 @@ c = GS.make(%{gradi: 0, minuti: 5, secondi: 0})
 alias CargCad.Vestizione
 
 alias Elaixir.Repo
+
+alias Griglia
+
+g = Griglia.spazia()

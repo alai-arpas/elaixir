@@ -1,0 +1,1 @@
+iex --name alai_elaixir --cookie elaixir_cookie -S mix
