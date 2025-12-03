@@ -1,1 +1,1 @@
-iex --name alai_elaixir --cookie elaixir_cookie -S mix
+iex --name alai_elaixir --cookie alai_elaixir -S mix

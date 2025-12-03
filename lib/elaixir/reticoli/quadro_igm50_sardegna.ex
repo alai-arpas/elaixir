@@ -1,4 +1,17 @@
 defmodule Elaixir.Reticoli.QuadroIgm50Sardegna do
+  @moduledoc """
+  Suddivisio IGM50 per la regione Sardegna, viene rappresentato
+  come una griglia regolare di (6 larghezza X 13 altezza)
+
+  Alcune Fogli non esistono perche ricadono a mare
+  ad esempio M-571 (questi fogli iniziano con "M-") rappresenta
+  il foglio in basso a sinistra che ricade competamente a mare e
+  viene usato come base per il calcolo delle coordiante.
+  @lon_x_gg_mm_ss %GradiSessagesimali{gradi: 8, minuti: 0, secondi: 0}
+  @lat_y_gg_mm_ss %GradiSessagesimali{gradi: 38, minuti: 48, secondi: 0}
+
+  """
+
   alias Elaixir.Coordinate.GradiSessagesimali
   alias Elaixir.Reicoli.Incrementi
 
@@ -18,11 +31,11 @@ defmodule Elaixir.Reticoli.QuadroIgm50Sardegna do
     ["M-571", "572", "573", "M-573", "M-574", "M-575"]
   ]
 
-  def quadro_bottom_left do
+  def quadro_visuale do
     @tabella
   end
 
-  def quadro_top_left do
+  def quadro_per_calcoli do
     Enum.reverse(@tabella)
   end
 
@@ -33,47 +46,8 @@ defmodule Elaixir.Reticoli.QuadroIgm50Sardegna do
     %{nome: "M-571", lon_x: @lon_x_gg_mm_ss, lat_y: @lat_y_gg_mm_ss}
   end
 
-  @doc """
-  Converte una mappa %{gradi: g, minuti: m, secondi: s} in decimale.
-  """
-  def to_decimale(%{gradi: g, minuti: m, secondi: s}) do
-    g + m / 60 + s / 3600
-  end
-
-  @doc """
-  Converte un valore decimale in una mappa %{gradi: g, minuti: m, secondi: s}.
-  I secondi sono arrotondati all’intero più vicino.
-  """
-  def to_sessagesimali(valore) do
-    gradi = trunc(valore)
-    minuti_float = (valore - gradi) * 60
-    minuti = trunc(minuti_float)
-    secondi = round((minuti_float - minuti) * 60)
-
-    # correzione overflow secondi → minuti
-    {minuti, secondi} =
-      if secondi == 60 do
-        {minuti + 1, 0}
-      else
-        {minuti, secondi}
-      end
-
-    # correzione overflow minuti → gradi
-    {gradi, minuti} =
-      if minuti == 60 do
-        {gradi + 1, 0}
-      else
-        {gradi, minuti}
-      end
-
-    %{gradi: gradi, minuti: minuti, secondi: secondi}
-  end
-
-  def get_igm do
-    # lon_x_decimale = to_decimale(@lon_x_gg_mm_ss)
-    # lat_y_decimale = to_decimale(@lat_y_gg_mm_ss)
-
-    quadro_top_left()
+  def quadro_col_row do
+    quadro_per_calcoli()
     |> Enum.with_index()
     |> Enum.map(fn {riga, i_riga} ->
       riga
@@ -82,17 +56,15 @@ defmodule Elaixir.Reticoli.QuadroIgm50Sardegna do
         {valore, {i_riga, i_col}}
       end)
     end)
+    |> List.flatten()
+    |> List.flatten()
+    |> Enum.sort()
   end
 
-  def get_igm_left_bottom do
-    quadro_top_left()
-    |> Enum.with_index()
-    |> Enum.map(fn {riga, i_riga} ->
-      riga
-      |> Enum.with_index()
-      |> Enum.map(fn {valore, i_col} ->
-        {valore, {i_riga, i_col}, get_new_base({i_riga, i_col})}
-      end)
+  def quadro_coordinate_left_bottom do
+    quadro_col_row()
+    |> Enum.map(fn {nome, coordinate_row_colum} ->
+      {nome, get_new_base(coordinate_row_colum)}
     end)
   end
 
@@ -112,17 +84,9 @@ defmodule Elaixir.Reticoli.QuadroIgm50Sardegna do
     {new_lon_x, new_lat_y}
   end
 
-  def get_igm_validi do
-    get_igm_left_bottom()
-    |> List.flatten()
-    |> Enum.filter(fn {igm, _riga_colonna, _coord} -> not String.starts_with?(igm, "M") end)
-    |> Enum.map(fn {igm, _riga_colonna, {x, y}} -> {igm, x, y} end)
-    |> Enum.reduce(%{}, fn {igm, x, y}, acc -> Map.put(acc, igm, %{lb_x: x, lb_y: y}) end)
-  end
-
-  def elabora_dammi_10_punti({igm, x, y}) do
-    x_inc_10 = Incrementi.get_x(10)
-    y_inc_10 = Incrementi.get_y(10)
-    {igm, x, y, x_inc_10, y_inc_10}
+  def get_mappa_nome_coordinate do
+    quadro_coordinate_left_bottom()
+    |> Enum.filter(fn {igm, _coord} -> not String.starts_with?(igm, "M") end)
+    |> Enum.into(%{})
   end
 end
