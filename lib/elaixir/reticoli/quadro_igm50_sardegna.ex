@@ -15,7 +15,7 @@ defmodule Elaixir.Reticoli.QuadroIgm50Sardegna do
   alias Elaixir.Coordinate.GradiSessagesimali
   alias Elaixir.Reicoli.Incrementi
 
-  @tabella [
+  @nomi [
     ["M-408", "M-409", "M-410", "411", "412", "M-413"],
     ["425", "M-425", "426", "427", "428", "M-429"],
     ["440", "441", "442", "443", "444", "445"],
@@ -32,11 +32,11 @@ defmodule Elaixir.Reticoli.QuadroIgm50Sardegna do
   ]
 
   def quadro_visuale do
-    @tabella
+    @nomi
   end
 
   def quadro_per_calcoli do
-    Enum.reverse(@tabella)
+    Enum.reverse(@nomi)
   end
 
   @lon_x_gg_mm_ss %GradiSessagesimali{gradi: 8, minuti: 0, secondi: 0}

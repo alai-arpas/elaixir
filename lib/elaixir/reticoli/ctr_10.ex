@@ -48,5 +48,5 @@ defmodule Elaixir.Reticoli.Ctr10 do
     igm
   end
 
-  {:x, :y}
+
 end
