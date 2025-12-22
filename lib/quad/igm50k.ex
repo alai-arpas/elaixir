@@ -5,7 +5,7 @@ defmodule Quad.Igm50k do
   def scala, do: 50
 
   @impl true
-  def nomi do
+  def nomi(_valore \\ "") do
     [
       ["M-408", "M-409", "M-410", "411", "412", "M-413"]
     ]

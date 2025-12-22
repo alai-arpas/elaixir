@@ -30,7 +30,9 @@ defmodule Elaixir.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
-      {:ex_doc, ">= 0.0.0", only: :dev, runtime: false}
+      {:ex_doc, ">= 0.0.0", only: :dev, runtime: false},
+      {:kino_explorer, "~> 0.1.20", only: :dev, runtime: false},
+      {:xml_builder, "~> 2.4"}
     ]
   end
 
