@@ -1,8 +1,8 @@
 alias Elaixir.Coordinate.GradiSessagesimali, as: GS
 
-alias Elaixir.Reicoli.Incrementi, as: Incrementi
+alias Elaixir.Reticoli.Incrementi, as: Incrementi
 
-alias Elaixir.Reicoli.Quadro
+
 
 alias Elaixir.Reticoli.QuadroIgm50Sardegna, as: IgmQ50
 
@@ -19,5 +19,9 @@ alias CargCad.Vestizione
 alias Elaixir.Repo
 
 alias Griglia
+
+alias Quadro.QCtr10
+alias Quadro.QIgm50
+
 
 g = Griglia.spazia()

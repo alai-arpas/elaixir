@@ -1,8 +1,13 @@
-defmodule Elaixir.Reicoli.Incrementi do
+defmodule Elaixir.Reticoli.Incrementi do
   @moduledoc """
   Incrementi di coordinate reticolari per diverse scale cartografiche.
   """
   alias Elaixir.Coordinate.GradiSessagesimali, as: GradiSessagesimali
+
+  @type incremento :: %{
+          x: GradiSessagesimali.t(),
+          y: GradiSessagesimali.t()
+        }
 
   @incrementi %{
     5 => %{
@@ -28,22 +33,11 @@ defmodule Elaixir.Reicoli.Incrementi do
   @doc """
   Restituisce l'incremento x per la scala specificata.
   """
-  @spec get_x(integer()) :: GradiSessagesimali.t() | nil
-  def get_x(scala) do
+  @spec get_for_scala(integer()) :: incremento
+  def get_for_scala(scala) do
     case @incrementi[scala] do
-      %{x: x} -> x
-      _ -> nil
-    end
-  end
-
-  @doc """
-  Restituisce l'incremento y per la scala specificata.
-  """
-  @spec get_y(integer()) :: GradiSessagesimali.t() | nil
-  def get_y(scala) do
-    case @incrementi[scala] do
-      %{y: y} -> y
-      _ -> nil
+      nil -> raise("Scala '#{scala}' non prevista.")
+      incremento -> incremento
     end
   end
 
