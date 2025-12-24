@@ -4,6 +4,6 @@ defmodule Quadro.Gestore do
   defstruct griglia_50: []
 
   def start do
-    List.flatten(Q50.griglia_nomi())
+    Q50.griglia_nomi()
   end
 end
