@@ -1,6 +1,8 @@
 defmodule Quadro.QCtr10 do
   use Quadro.Base
 
+  alias Quadro.QIgm50
+
   @nomi [
     ["010", "020", "030", "040"],
     ["050", "060", "070", "080"],
@@ -17,8 +19,7 @@ defmodule Quadro.QCtr10 do
   end
 
   @impl true
-  def origin(_foglio50) do
-    # esempio
-    {39.9, 8.7}
+  def origine(foglio50) do
+    QIgm50.origine_da_igm50(foglio50)
   end
 end

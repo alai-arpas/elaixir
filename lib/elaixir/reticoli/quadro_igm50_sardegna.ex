@@ -13,7 +13,7 @@ defmodule Elaixir.Reticoli.QuadroIgm50Sardegna do
   """
 
   alias Elaixir.Coordinate.GradiSessagesimali
-  alias Elaixir.Reicoli.Incrementi
+  alias Elaixir.Reticoli.Incrementi
 
   @nomi [
     ["M-408", "M-409", "M-410", "411", "412", "M-413"],
@@ -71,9 +71,10 @@ defmodule Elaixir.Reticoli.QuadroIgm50Sardegna do
   def get_new_base({i_riga_Y, i_col_X}) do
     # Quando {i_riga, i_col} = {0,0} non viene incrementato nulla
     # siamo nello spigolo bottom_left
+    incrementi = Incrementi.get_for_scala(50)
 
-    x_inc_50 = Incrementi.get_x(50)
-    y_inc_50 = Incrementi.get_y(50)
+    x_inc_50 = Map.get(incrementi, :x)
+    y_inc_50 = Map.get(incrementi, :y)
 
     incremento_x_totale = GradiSessagesimali.moltiplica(x_inc_50, i_col_X)
     incremento_y_totale = GradiSessagesimali.moltiplica(y_inc_50, i_riga_Y)
