@@ -14,8 +14,12 @@ defmodule Quadro.QCtr10 do
   def scala, do: 10
 
   @impl true
-  def griglia_nomi(_prefisso \\ "") do
-    @nomi
+  def griglia_nomi(prefisso \\ "") do
+    for riga <- @nomi do
+      for nome <- riga do
+        prefisso <> "-" <> nome
+      end
+    end
   end
 
   @impl true
