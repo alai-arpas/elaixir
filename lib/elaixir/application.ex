@@ -9,7 +9,7 @@ defmodule Elaixir.Application do
   def start(_type, _args) do
     children = [
       # Starts a worker by calling: Prova.Worker.start_link(arg)
-      Quadro.GenServerQuadro
+      Elaixir.Reticoli.Sardegna
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html

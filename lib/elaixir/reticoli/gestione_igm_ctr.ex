@@ -1,11 +1,34 @@
-defmodule Quadro.Gestore do
+defmodule Elaixir.Reticoli.GestioneIgmCtr do
+  @moduledoc """
+  Suddivisio IGM50 per la regione Sardegna, viene rappresentato
+  come una griglia regolare di (6 larghezza X 13 altezza)
+
+  Alcune Fogli non esistono perche ricadono a mare
+  ad esempio M-571 (questi fogli iniziano con "M-") rappresenta
+  il foglio in basso a sinistra che ricade competamente a mare e
+  viene usato come base per il calcolo delle coordiante.
+
+  """
+
   alias Elaixir.Coordinate.GradiSessagesimali
   alias Elaixir.Reticoli.Incrementi
-  defstruct griglia: nil, left_bottom: []
+
+  defstruct igm50_griglia: [],
+            igm50_coordinate: [],
+            igm50_nomi: [],
+            igm25_griglia: [],
+            igm25_nomi: [],
+            ctr10_griglia: [],
+            ctr10_nomi: []
 
   @type t :: %__MODULE__{
-          griglia: list(),
-          left_bottom: list() | nil
+          igm50_griglia: list(),
+          igm50_coordinate: list(),
+          igm50_nomi: list(),
+          igm25_griglia: list(),
+          igm25_nomi: list(),
+          ctr10_griglia: list(),
+          ctr10_nomi: list()
         }
 
   @type griglia_suddivide :: :ctr10 | :igm25 | :igm50
@@ -46,38 +69,50 @@ defmodule Quadro.Gestore do
     end
   end
 
-  def fogli_igm50() do
-    griglia_nomi(:igm50)
+  def fogli(griglia_suddivide) do
+    griglia_nomi(griglia_suddivide)
     |> List.flatten()
     |> List.flatten()
     |> Enum.sort()
   end
 
   def origine(griglia_suddivide, foglio \\ "M-571") do
-    case griglia_suddivide do
-      :ctr10 ->
+    case {griglia_suddivide, foglio} do
+      {:ctr10, foglio} ->
         origine_calcola(foglio)
 
-      :igm25 ->
+      {:igm25, foglio} ->
         origine_calcola(foglio)
 
-      :igm50 ->
+      {:igm50, "M-571"} ->
         %{
           x: %GradiSessagesimali{gradi: 8, minuti: 0, secondi: 0},
           y: %GradiSessagesimali{gradi: 38, minuti: 48, secondi: 0}
         }
+
+      {:igm50, foglio} ->
+        origine_calcola(foglio)
     end
   end
 
-  defp origine_calcola(_foglio) do
-    %{
-      x: %GradiSessagesimali{gradi: 8, minuti: 0, secondi: 0},
-      y: %GradiSessagesimali{gradi: 38, minuti: 48, secondi: 0}
-    }
+  defp origine_calcola(foglio) do
+    igm_coordinate =
+      Elaixir.Reticoli.Sardegna.info()
+      |> Map.get(:igm50_coordinate)
+
+    Map.get(igm_coordinate, foglio)
   end
 
   def start do
-    quadro_col_row(:igm50)
+    %__MODULE__{
+      igm50_griglia: griglia_nomi(:igm50),
+      igm50_coordinate: quadro_coordinate_left_bottom(:igm50),
+      igm50_nomi: fogli(:igm50),
+      igm25_griglia: griglia_nomi(:igm25),
+      igm25_nomi: fogli(:igm25),
+      ctr10_griglia: griglia_nomi(:ctr10),
+      ctr10_nomi: fogli(:ctr10)
+    }
   end
 
   ###############################################
@@ -105,7 +140,7 @@ defmodule Quadro.Gestore do
     |> Enum.map(fn {nome, coordinate_row_colum} ->
       {nome, get_new_base(griglia_suddivide, coordinate_row_colum, foglio)}
     end)
-    |> Enum.into(%{})
+    |> Enum.into(%{foglio: foglio})
   end
 
   def get_new_base(griglia_suddivide, {i_riga_Y, i_col_X}, foglio \\ "M-571") do
@@ -115,7 +150,7 @@ defmodule Quadro.Gestore do
       case griglia_suddivide do
         :ctr10 -> {10, origine(:ctr10, foglio)}
         :igm25 -> {25, origine(:igm25, foglio)}
-        :igm50 -> {50, origine(:igm50)}
+        :igm50 -> {50, origine(:igm50, foglio)}
       end
 
     %{x: lon_x_gg_mm_ss, y: lat_y_gg_mm_ss} = punto_base_left_bottom
@@ -130,6 +165,6 @@ defmodule Quadro.Gestore do
     new_lon_x = GradiSessagesimali.somma(lon_x_gg_mm_ss, incremento_x_totale)
     new_lat_y = GradiSessagesimali.somma(lat_y_gg_mm_ss, incremento_y_totale)
 
-    {new_lon_x, new_lat_y}
+    %{x: new_lon_x, y: new_lat_y}
   end
 end

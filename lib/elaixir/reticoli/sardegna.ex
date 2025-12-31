@@ -1,7 +1,7 @@
-defmodule Quadro.GenServerQuadro do
+defmodule Elaixir.Reticoli.Sardegna do
   use GenServer
 
-  alias Quadro.Gestore, as: Qgestore
+  alias Elaixir.Reticoli.GestioneIgmCtr
 
   # Client
   # per ora pensato per partire con defualt = []
@@ -16,7 +16,7 @@ defmodule Quadro.GenServerQuadro do
 
   @impl true
   def init(_elements) do
-    initial_state = Qgestore.start()
+    initial_state = GestioneIgmCtr.start()
     {:ok, initial_state}
   end
 
