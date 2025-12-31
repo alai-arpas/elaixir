@@ -24,7 +24,7 @@ defmodule Quadro.QIgm50 do
   def griglia_nomi(_non_usato_per_50 \\ ""), do: @griglia
 
   @impl true
-  def origine(_non_usato_per_50_fisso \\ "") do
+  def origine(_non_usato_per_50_fisso \\ "M-571") do
     %{
       x: %GradiSessagesimali{gradi: 8, minuti: 0, secondi: 0},
       y: %GradiSessagesimali{gradi: 38, minuti: 48, secondi: 0}
