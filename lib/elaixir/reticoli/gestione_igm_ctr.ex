@@ -119,9 +119,8 @@ defmodule Elaixir.Reticoli.GestioneIgmCtr do
   #### calcolo coordinate in base a griglia #####
   ###############################################
 
-  def quadro_col_row(griglia_suddivide) do
+  def quadro_row_col(griglia_suddivide) do
     #  @type griglia_suddivide :: :ctr10 | :igm25 | :igm50
-    # reverse solo per calcolo
     Enum.reverse(griglia_nomi(griglia_suddivide))
     |> Enum.with_index()
     |> Enum.map(fn {riga, i_riga} ->
@@ -137,7 +136,7 @@ defmodule Elaixir.Reticoli.GestioneIgmCtr do
   end
 
   def quadro_coordinate_left_bottom(griglia_suddivide, foglio \\ "M-571") do
-    quadro_col_row(griglia_suddivide)
+    quadro_row_col(griglia_suddivide)
     |> Enum.map(fn {nome, coordinate_row_colum} ->
       {nome, get_new_base(griglia_suddivide, coordinate_row_colum, foglio)}
     end)
