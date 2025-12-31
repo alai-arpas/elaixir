@@ -121,7 +121,8 @@ defmodule Elaixir.Reticoli.GestioneIgmCtr do
 
   def quadro_col_row(griglia_suddivide) do
     #  @type griglia_suddivide :: :ctr10 | :igm25 | :igm50
-    griglia_nomi(griglia_suddivide)
+    # reverse solo per calcolo
+    Enum.reverse(griglia_nomi(griglia_suddivide))
     |> Enum.with_index()
     |> Enum.map(fn {riga, i_riga} ->
       riga
