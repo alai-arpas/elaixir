@@ -7,7 +7,7 @@ defmodule Elaixir.MixProject do
     [
       app: :elaixir,
       version: @version,
-      elixir: "~> 1.18",
+      elixir: "~> 1.19",
       description: description(),
       package: package(),
       start_permanent: Mix.env() == :prod,

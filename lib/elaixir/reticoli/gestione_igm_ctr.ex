@@ -168,15 +168,51 @@ defmodule Elaixir.Reticoli.GestioneIgmCtr do
     %{x: new_lon_x, y: new_lat_y}
   end
 
-  def get_row_col_vertici(griglia) do
-    uno = 1
-    row = length(griglia) + uno
-    col = (hd(griglia) |> length()) + uno
+  def get_row_col_vertici(griglia_suddivide) do
+    griglia = griglia_nomi(griglia_suddivide)
+    row = length(griglia)
+    col = hd(griglia) |> length()
 
-    for r <- row do
-      for c <- col do
+    for r <- 0..row do
+      for c <- 0..col do
         {r, c}
       end
     end
+  end
+
+  def calcola_vertici(griglia_suddivide, foglio \\ "M-571") do
+    {scala, lb_point} =
+      case griglia_suddivide do
+        :ctr10 -> {10, origine(:ctr10, foglio)}
+        :igm25 -> {25, origine(:igm25, foglio)}
+        :igm50 -> {50, origine(:igm50, foglio)}
+      end
+
+    incrementi = Incrementi.get_for_scala(scala)
+
+    vertici =
+      get_row_col_vertici(griglia_suddivide)
+      |> List.flatten()
+      |> Enum.map(fn coordinate_row_colum ->
+        get_vertice(lb_point, coordinate_row_colum, incrementi)
+      end)
+      |> Enum.into(%{foglio: foglio})
+
+    vertici
+  end
+
+  def get_vertice(lb_point, {i_riga_Y, i_col_X} = coordinate_row_colum, incrementi) do
+    %{x: lon_x_gg_mm_ss, y: lat_y_gg_mm_ss} = lb_point
+
+    x_inc = Map.get(incrementi, :x)
+    y_inc = Map.get(incrementi, :y)
+
+    incremento_x_totale = GradiSessagesimali.moltiplica(x_inc, i_col_X)
+    incremento_y_totale = GradiSessagesimali.moltiplica(y_inc, i_riga_Y)
+
+    new_lon_x = GradiSessagesimali.somma(lon_x_gg_mm_ss, incremento_x_totale)
+    new_lat_y = GradiSessagesimali.somma(lat_y_gg_mm_ss, incremento_y_totale)
+
+    {coordinate_row_colum, %{x: new_lon_x, y: new_lat_y}}
   end
 end
