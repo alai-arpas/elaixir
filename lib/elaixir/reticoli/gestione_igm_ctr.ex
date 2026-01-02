@@ -167,4 +167,16 @@ defmodule Elaixir.Reticoli.GestioneIgmCtr do
 
     %{x: new_lon_x, y: new_lat_y}
   end
+
+  def get_row_col_vertici(griglia) do
+    uno = 1
+    row = length(griglia) + uno
+    col = (hd(griglia) |> length()) + uno
+
+    for r <- row do
+      for c <- col do
+        {r, c}
+      end
+    end
+  end
 end
