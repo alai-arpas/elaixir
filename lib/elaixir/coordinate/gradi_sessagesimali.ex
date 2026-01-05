@@ -62,8 +62,8 @@ defmodule Elaixir.Coordinate.GradiSessagesimali do
   in formato `G° M' S"`.
   """
   @spec to_name(t()) :: String.t()
-  def to_name(%__MODULE__{gradi: g, minuti: m, secondi: s}) do
-    "#{g}_#{m}_#{s}"
+  def to_name(%__MODULE__{gradi: g, minuti: m, secondi: s}, separatore \\ ":") do
+    "#{g}#{separatore}#{m}#{separatore}#{s}"
   end
 
   @doc """

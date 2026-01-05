@@ -196,9 +196,9 @@ defmodule Elaixir.Reticoli.GestioneIgmCtr do
       |> Enum.map(fn coordinate_row_colum ->
         get_vertice(lb_point, coordinate_row_colum, incrementi)
       end)
-      |> Enum.into(%{foglio: foglio})
+      |> Enum.into(%{})
 
-    vertici
+    {griglia_suddivide, foglio, vertici}
   end
 
   def get_vertice(lb_point, {i_riga_Y, i_col_X} = coordinate_row_colum, incrementi) do
