@@ -1,19 +1,23 @@
 defmodule Elaixir.Reticoli.CoordRow do
+  alias Elaixir.Coordinate.GradiSessagesimali, as: GS
+  alias Elaixir.Coordinate.GeoConverter, as: GConv
+
   defstruct tipo: "",
             foglio: 0,
             row_lat_y: 0,
             col_lon_x: 0,
             lon_x__lat_y: "",
             lon_x_dec: 0.0,
-            lat_y_dec: 0.0
+            lat_y_dec: 0.0,
+            x_6707: 0.0,
+            y_6707: 0.0
 
-  def report(lista_fogli_coordinate, n) do
+  def report(lista_fogli_coordinate) do
     lista_fogli_coordinate
-    |> Enum.take(n)
     |> Enum.map(&report_foglio/1)
   end
 
-  def report_foglio(lista_fogli_coordinate) do
+  defp report_foglio(lista_fogli_coordinate) do
     {tipo, foglio, vertici} = lista_fogli_coordinate
 
     tabella_coordinate =
@@ -22,7 +26,7 @@ defmodule Elaixir.Reticoli.CoordRow do
     tabella_coordinate
   end
 
-  def report_coordinate(vertice, tipo, foglio) do
+  defp report_coordinate(vertice, tipo, foglio) do
     {{row, col},
      %{
        x: x,
@@ -38,8 +42,5 @@ defmodule Elaixir.Reticoli.CoordRow do
       lon_x_dec: GConv.to_decimale(x),
       lat_y_dec: GConv.to_decimale(y)
     }
-  end
-
-  def new_tabella(lista_fogli_coordinate) do
   end
 end
