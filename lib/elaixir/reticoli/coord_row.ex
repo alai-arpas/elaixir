@@ -2,6 +2,11 @@ defmodule Elaixir.Reticoli.CoordRow do
   alias Elaixir.Coordinate.GradiSessagesimali, as: GS
   alias Elaixir.Coordinate.GeoConverter, as: GConv
 
+  require Explorer.DataFrame, as: DF
+  @nomefile_parquet "sardegna_coord_10ctr_25igm_e50gradi_6707.parquet"
+
+  #  @nomefile_csv "sardegna_coord_10ctr_25igm_e50gradi_6707.csv"
+
   defstruct tipo: "",
             foglio: 0,
             row_lat_y: 0,
@@ -46,5 +51,20 @@ defmodule Elaixir.Reticoli.CoordRow do
       lon_x_dec: GConv.to_decimale(x),
       lat_y_dec: GConv.to_decimale(y)
     }
+  end
+
+  def import_from_parquet() do
+    path =
+      :code.priv_dir(:elaixir)
+      |> Path.join("data/#{@nomefile_parquet}")
+
+    df_csv = Explorer.DataFrame.from_parquet!(path)
+    rows_from_parquet = DF.to_rows(df_csv)
+
+    rows_from_parquet
+    |> Enum.map(fn m -> Enum.map(m, fn {k, v} -> {String.to_atom(k), v} end) end)
+    |> Enum.map(fn kw ->
+      struct(Elaixir.Reticoli.CoordRow, kw)
+    end)
   end
 end

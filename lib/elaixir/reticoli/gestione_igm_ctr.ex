@@ -11,6 +11,7 @@ defmodule Elaixir.Reticoli.GestioneIgmCtr do
   """
 
   alias Elaixir.Coordinate.GradiSessagesimali
+  alias Elaixir.Reticoli.CoordRow
   alias Elaixir.Reticoli.Incrementi
 
   defstruct igm50_griglia: [],
@@ -19,7 +20,8 @@ defmodule Elaixir.Reticoli.GestioneIgmCtr do
             igm25_griglia: [],
             igm25_nomi: [],
             ctr10_griglia: [],
-            ctr10_nomi: []
+            ctr10_nomi: [],
+            coord_6707: []
 
   @type t :: %__MODULE__{
           igm50_griglia: list(),
@@ -28,7 +30,8 @@ defmodule Elaixir.Reticoli.GestioneIgmCtr do
           igm25_griglia: list(),
           igm25_nomi: list(),
           ctr10_griglia: list(),
-          ctr10_nomi: list()
+          ctr10_nomi: list(),
+          coord_6707: list()
         }
 
   @type griglia_suddivide :: :ctr10 | :igm25 | :igm50
@@ -111,7 +114,8 @@ defmodule Elaixir.Reticoli.GestioneIgmCtr do
       igm25_griglia: griglia_nomi(:igm25),
       igm25_nomi: fogli(:igm25),
       ctr10_griglia: griglia_nomi(:ctr10),
-      ctr10_nomi: fogli(:ctr10)
+      ctr10_nomi: fogli(:ctr10),
+      coord_6707: CoordRow.import_from_parquet()
     }
   end
 
