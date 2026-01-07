@@ -31,7 +31,7 @@ defmodule Elaixir.Reticoli.GestioneIgmCtr do
           igm25_nomi: list(),
           ctr10_griglia: list(),
           ctr10_nomi: list(),
-          coord_6707: list()
+          coord_6707: Map.t()
         }
 
   @type griglia_suddivide :: :ctr10 | :igm25 | :igm50
@@ -115,7 +115,7 @@ defmodule Elaixir.Reticoli.GestioneIgmCtr do
       igm25_nomi: fogli(:igm25),
       ctr10_griglia: griglia_nomi(:ctr10),
       ctr10_nomi: fogli(:ctr10),
-      coord_6707: CoordRow.import_from_parquet()
+      coord_6707: CoordRow.crea_mappa__tipo_foglio_row_col()
     }
   end
 

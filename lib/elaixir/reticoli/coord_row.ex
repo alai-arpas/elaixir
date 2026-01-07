@@ -67,4 +67,13 @@ defmodule Elaixir.Reticoli.CoordRow do
       struct(Elaixir.Reticoli.CoordRow, kw)
     end)
   end
+
+  def crea_mappa__tipo_foglio_row_col() do
+    import_from_parquet()
+    |> Enum.map(fn m ->
+      {{Map.get(m, :tipo), Map.get(m, :foglio), Map.get(m, :row_lat_y), Map.get(m, :col_lon_x)},
+       Map.drop(m, [:__struct__, :tipo, :foglio, :col_lon_x, :row_lat_y])}
+    end)
+    |> Enum.into(%{})
+  end
 end
