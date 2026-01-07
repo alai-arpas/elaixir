@@ -1,7 +1,7 @@
 defmodule Elaixir.MixProject do
   use Mix.Project
 
-  @version "0.1.16"
+  @version "0.1.17"
 
   def project do
     [
@@ -33,7 +33,8 @@ defmodule Elaixir.MixProject do
     [
       {:ex_doc, ">= 0.0.0", only: :dev, runtime: false},
       {:kino_explorer, "~> 0.1.20", only: :dev, runtime: false},
-      {:xml_builder, "~> 2.4"}
+      {:xml_builder, "~> 2.4"},
+      {:nimble_csv, "~> 1.3"}
     ]
   end
 

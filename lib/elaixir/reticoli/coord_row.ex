@@ -7,10 +7,12 @@ defmodule Elaixir.Reticoli.CoordRow do
             row_lat_y: 0,
             col_lon_x: 0,
             lon_x__lat_y: "",
+            lon_x: "lon_x",
+            lon_y: "lon_y",
             lon_x_dec: 0.0,
             lat_y_dec: 0.0,
-            x_6707: 0.0,
-            y_6707: 0.0
+            x_6707_gsb: 99.9,
+            y_6707_gsb: 99.9
 
   def report(lista_fogli_coordinate) do
     lista_fogli_coordinate
@@ -34,11 +36,13 @@ defmodule Elaixir.Reticoli.CoordRow do
      }} = vertice
 
     %__MODULE__{
-      tipo: tipo,
+      tipo: Atom.to_string(tipo),
       foglio: foglio,
       row_lat_y: row,
       col_lon_x: col,
       lon_x__lat_y: GS.to_name(x) <> "_" <> GS.to_name(y),
+      lon_x: GS.to_name(x),
+      lon_y: GS.to_name(y),
       lon_x_dec: GConv.to_decimale(x),
       lat_y_dec: GConv.to_decimale(y)
     }
